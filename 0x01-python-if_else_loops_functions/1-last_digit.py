@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 import random
 number = random.randint(-10000, 10000)
-temp = abs(number)
-temp = temp % 10
 
-if number < 0 and temp != 0:
-    temp = temp * -1
+if number >= 0:
+    temp = number % 10
+if number < 0:
+    temp = number % -10
 
 print('Last digit of {0} is {1} and is'.format(number, temp), end="")
 

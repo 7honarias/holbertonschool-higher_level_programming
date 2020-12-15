@@ -8,7 +8,7 @@ def new_in_list(my_list, idx, element):
     Returns:
         new list
     """
-    if idx < 0 or len(my_list) <= 0:
+    if idx < 0 or len(my_list) <= idx:
         return (my_list)
     new_list = my_list.copy()
     new_list[idx] = element

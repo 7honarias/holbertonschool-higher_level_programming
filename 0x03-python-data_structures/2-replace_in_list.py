@@ -6,7 +6,7 @@ def replace_in_list(my_list, idx, element):
     Returns:
         my_list always
     """
-    if (idx < 0) or (len(my_list) < idx):
+    if (idx < 0) or (len(my_list) <= idx):
         return (my_list)
 
     my_list[idx] = element

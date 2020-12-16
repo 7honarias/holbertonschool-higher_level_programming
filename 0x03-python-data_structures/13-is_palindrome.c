@@ -13,23 +13,24 @@ int is_palindrome(listint_t **head)
 	listint_t *last = NULL;
 	int x;
 
-	if (head && *head)
+	if (!head || !*head || temp->next == NULL)
 	{
-		while (temp)
-		{
-			x = temp->n;
-			add_nodeint(&last, x);
-			temp = temp->next;
-		}
-		temp = *head;
-		temp_last = last;
-		while (temp)
-		{
-			if (temp->n != temp_last->n)
-				return (0);
-			temp = temp->next;
-			temp_last = temp_last->next;
-		}
+		return (1);
+	}
+	while (temp)
+	{
+		x = temp->n;
+		add_nodeint(&last, x);
+		temp = temp->next;
+	}
+	temp = *head;
+	temp_last = last;
+	while (temp)
+	{
+		if (temp->n != temp_last->n)
+			return (0);
+		temp = temp->next;
+		temp_last = temp_last->next;
 	}
 	free_listint(last);
 	return (1);

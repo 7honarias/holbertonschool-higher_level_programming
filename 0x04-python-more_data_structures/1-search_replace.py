@@ -1,4 +1,4 @@
-#!/usr/bn/python3
+#!/usr/bin/python3
 def search_replace(my_list, search, replace):
 
     """Write a function that replaces all occurrences of

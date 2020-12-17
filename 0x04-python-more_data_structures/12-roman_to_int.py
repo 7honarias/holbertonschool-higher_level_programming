@@ -2,7 +2,8 @@
 def roman_to_int(roman_string):
 
     if roman_string.isalpha() or roman_string is not None:
-        dic_roman = {"X": 10, "I": 1, "V": 5, "C": 100, "L": 50, "D": 500}
+        dic_roman = {
+            "X": 10, "I": 1, "V": 5, "C": 100, "L": 50, "D": 500, "M": 1000}
         result = 0
         temp = 0
         for str in roman_string:

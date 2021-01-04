@@ -1,16 +1,9 @@
 #!/usr/bin/python3
-def validation(value):
-    x = value
-    if value < 0:
-        x = value * -1
-    if type(value) != int:
-        raise TypeError
-
-
+import sys
 def safe_print_integer_err(value):
     try:
-        validation(value)
         print("{:d}".format(value))
-    except TypeError:
+    except (ValueError, TypeError) as error:
+        print("Exception:{}".format(error), file=sys.stderr)
         return (False)
     return (True)

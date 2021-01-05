@@ -12,10 +12,14 @@ class Square:
 
     @property
     def size(self):
+        """getter of size"""
+
         return self._Square__size
 
     @size.setter
     def size(self, value):
+        """ setter of size"""
+
         if not isinstance(value, int):
             raise TypeError("size must be an interger")
         if value < 0:
@@ -23,6 +27,8 @@ class Square:
         self._Square__size = value
 
     def my_print(self):
+        """ function print with #"""
+
         for x in range(0, self._Square__size):
             print("#"*self._Square__size)
         if self._Square__size == 0:

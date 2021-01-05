@@ -4,14 +4,13 @@
 
 class Square:
     """Class define square"""
-    
+
     def __init__(self, size=0):
         """ Private instance attribute: size:
         property def size(self): to retrieve it
         property setter def size(self, value): to set it: """
 
         self.size = size
-
 
     def my_print(self):
         """ function print with #"""
@@ -42,5 +41,3 @@ class Square:
         if value < 0:
             raise ValueError("size must be >= 0")
         self._Square__size = value
-
-    

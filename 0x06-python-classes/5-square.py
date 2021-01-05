@@ -33,3 +33,8 @@ class Square:
             print("#"*self._Square__size)
         if self._Square__size == 0:
             print()
+
+    def area(self):
+        """ return the area of square """
+
+        return self._Square__size * self._Square__size

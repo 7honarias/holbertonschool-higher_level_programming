@@ -96,3 +96,4 @@ class Square:
                 else:
                     continue
         self.__position = value
+        

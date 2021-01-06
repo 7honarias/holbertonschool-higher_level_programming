@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-class Perro:
+class Square:
     def __init__(self, name, age=0):
         self.set_name(name)
         self.dog_age = age

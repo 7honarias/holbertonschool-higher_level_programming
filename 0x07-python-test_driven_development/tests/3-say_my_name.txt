@@ -1,0 +1,52 @@
+3-say_my_name Module:
+=====================
+
+Import "say_my_name" from "3-say_my_name" module
+
+       >>> say_my_name = __import__("3-say_my_name").say_my_name
+
+pep8
+
+		>>> import os
+		>>> os.popen("pep8 3-say_my_name.py").read()
+		''
+
+Executable
+
+		>>> os.access('3-say_my_name.py', os.X_OK)
+		True
+
+last line
+
+		>>> os.popen('cat -e 3-say_my_name.py | tail -1').read()[-1]
+		'\n'
+
+
+		>>> say_my_name("Hello", "World")
+		My name is Hello World
+
+pass number
+
+		>>> say_my_name("Jhon", 2)
+		Traceback (most recent call last):
+		...
+		TypeError: last_name must be a string
+
+pass number
+
+		>>> say_my_name(2, "Arias")
+		Traceback (most recent call last):
+		...
+		TypeError: first_name must be a string
+
+pass list
+
+		>>> say_my_name("Jhon", ["Arias", "Esparza"])
+		Traceback (most recent call last):
+		...
+		TypeError: last_name must be a string
+
+Name of robot
+
+		>>> say_my_name("Rb32")
+		My name is Rb32 

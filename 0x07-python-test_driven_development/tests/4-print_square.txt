@@ -1,0 +1,46 @@
+4-print_square Module:
+=====================
+
+Import "print_square" from "3-print_square" module
+
+       >>> print_square = __import__("4-print_square").print_square
+
+pep8
+
+		>>> import os
+		>>> os.popen("pep8 4-print_square.py").read()
+		''
+
+Executable
+
+		>>> os.access('4-print_square.py', os.X_OK)
+		True
+
+last line
+
+		>>> os.popen('cat -e 4-print_square.py | tail -1').read()[-1]
+		'\n'
+
+try with float Negative
+
+		>>> print_square(-1.12)
+		Traceback (most recent call last):
+		TypeError: size must be an integer
+
+print 2
+
+		>>> print_square(2)
+		##
+		##
+
+try with String
+
+		>>> print_square('0')
+		Traceback (most recent call last):
+		TypeError: size must be an integer
+
+try with None
+
+		>>> print_square(None)
+		Traceback (most recent call last):
+		TypeError: size must be an integer

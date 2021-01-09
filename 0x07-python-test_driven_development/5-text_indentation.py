@@ -1,29 +1,27 @@
 #!/usr/bin/python3
-"""only one function
-"""
+""" this module contain the  text_identation function"""
 
 
 def text_indentation(text):
-    """print text
+    """ prints a text with 2 new lines after each of these characters:
+    '.'  '?'  ':'
+    Arguments:
+    text{str} - is the text"""
 
-    Args:
-        text (text): text to print 
-
-    Raises:
-        TypeError: must be a string, otherwise
-    """
-
-    if not isinstance(text, str):
+    lchar = ['.', '?', ':']
+    if type(text) is not str:
         raise TypeError("text must be a string")
+
     i = 0
-    space = " "
-    while len(text) > i:
-        if text[i - 1] in ('.', ':', '?') and i != 0:
-            if text[i] is space:
-                print("\n")
-                i += 1
-                continue
-            else:
-                print("\n")
-        print("{}".format(text[i]), end="")
+    while i < len(text):
+        if text[i] in lchar:
+            print("{}\n".format(text[i]))
+            i += 1
+
+            try:
+                while text[i] == ' ':
+                    i += 1
+            except IndexError:
+                break
+        print(text[i], end="")
         i += 1

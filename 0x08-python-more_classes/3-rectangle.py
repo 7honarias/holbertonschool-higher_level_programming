@@ -45,18 +45,20 @@ class Rectangle:
             self.__height = value
 
     def area(self):
-        re_area = self._Rectangle__width * self._Rectangle__height
+        re_area = self.__width * self.__height
         return(re_area)
 
     def perimeter(self):
-        if self._Rectangle__width == 0 or self._Rectangle__height == 0:
+        if self.__width == 0 or self.__height == 0:
             return("")
-        re_perim = (self._Rectangle__width + self._Rectangle__height) * 2
+        re_perim = (self.__width + self.__height) * 2
         return(re_perim)
 
     def __str__(self):
         s_rect = ""
-        line = "#" * self._Rectangle__width + "\n"
-        for i in range(0, self._Rectangle__height):
+        if self.__height == 0 or self.__width == 0:
+            return s_rect
+        line = "#" * self.__width + "\n"
+        for i in range(0, self.__height):
             s_rect += line
         return (s_rect[:-1])

@@ -55,10 +55,10 @@ class Rectangle:
         return(re_perim)
 
     def __str__(self):
-        s_rect = ""
-        if self.__height == 0 or self.__width == 0:
-            return s_rect
-        line = "#" * self.__width + "\n"
-        for i in range(0, self.__height):
-            s_rect += line
-        return (s_rect[:-1])
+        if self.__width == 0 or self.__height == 0:
+            return""
+        else:
+            for h in range(self.__height):
+                for w in range(self.height - 1):
+                    print('#' * self.__width)
+                return '#' * self.width

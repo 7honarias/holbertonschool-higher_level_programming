@@ -1,17 +1,17 @@
 #!/usr/bin/python3
-"""class rectangle"""
+''' 1-rectangle: python funtion that defines Rectangle type '''
 
 
 class Rectangle:
-    """def Rectangle"""
+    ''' define the rectangle type '''
 
     def __init__(self, width=0, height=0):
         self.width = width
-        self.height = width
+        self.height = height
 
     @property
     def width(self):
-        return(self.__width)
+        return self.__width
 
     @width.setter
     def width(self, value):
@@ -24,7 +24,7 @@ class Rectangle:
 
     @property
     def height(self):
-        return(self.__height)
+        return self.__height
 
     @height.setter
     def height(self, value):

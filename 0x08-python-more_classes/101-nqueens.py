@@ -2,7 +2,7 @@
 import sys
 
 my_list = []
-if len(sys.argv) < 2:
+if len(sys.argv) != 2:
     print("Usage: nqueens N")
     sys.exit(1)
 try:

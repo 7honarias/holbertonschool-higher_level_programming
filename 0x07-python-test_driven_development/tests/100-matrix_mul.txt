@@ -34,3 +34,17 @@ element of list is not a int or float
        Traceback (most recent call last):
        ....
        TypeError: m_a should contain only integers or floats
+
+test missing one argument
+
+       >>> matrix_mul([[1, 2], [3, 2]])
+       Traceback (most recent call last):
+       ....
+       TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+
+test correct output
+
+       >>> matrix_mul([[1, 2],[3, 4]], [[5, 6], [7, 8]])
+       [[19, 22], [43, 50]]
+

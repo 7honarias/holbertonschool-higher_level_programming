@@ -55,7 +55,7 @@ def matrix_mul(m_a, m_b):
         my_list = []
         x = 0
         while x < a:
-            y = 0;
+            y = 0
             suma = 0
             while y < a:
                 suma += m_a[m][y] * m_b[y][x]

@@ -17,10 +17,10 @@ def matrix_mul(m_a, m_b):
         raise TypeError("m_b can't be empty")
 
     for i in m_a:
-        if len(i) < 1:
-            raise ValueError("m_a can't be empty")
         if not isinstance(i, list):
             raise TypeError("m_a must be a list of lists")
+        if len(i) < 1:
+            raise ValueError("m_a can't be empty")
         for x in i:
             if type(x) not in (int, float):
                 raise TypeError("m_a should contain only integers or floats")
@@ -30,10 +30,10 @@ def matrix_mul(m_a, m_b):
             raise TypeError("each row of m_a must be of the same size")
 
     for i in m_b:
-        if len(i) < 1:
-            raise ValueError("m_b can't be empty")
         if not isinstance(i, list):
             raise TypeError("m_a must be a list of lists")
+        if len(i) < 1:
+            raise ValueError("m_b can't be empty")
         for x in i:
             if type(x) not in (int, float):
                 raise TypeError("m_b should contain only integers or floats")

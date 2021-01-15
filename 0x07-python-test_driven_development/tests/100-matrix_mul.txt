@@ -48,3 +48,15 @@ test correct output
        >>> matrix_mul([[1, 2],[3, 4]], [[5, 6], [7, 8]])
        [[19, 22], [43, 50]]
 
+test correct output
+
+       >>> matrix_mul([[1, 2], [3, 4], [3, 4]], [[5, 6, 1], [7, 8, 2]])
+       [[19, 22], [43, 50], [43, 50]]
+
+test empty
+
+       >>> matrix_mul([[5,6], [7, 8]], [[]])
+       Traceback (most recent call last):
+       ....
+       ValueError: m_b can't be empty
+

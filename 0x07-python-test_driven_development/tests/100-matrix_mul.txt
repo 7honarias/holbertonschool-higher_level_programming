@@ -60,3 +60,23 @@ test empty
        ....
        ValueError: m_b can't be empty
 
+test with list
+
+       >>> matrix_mul([[1, 2], [2, 4]], [1, 2 ,3])
+       Traceback (most recent call last):
+       ....
+       TypeError: m_a must be a list of lists
+
+test word m_a
+
+       >>> matrix_mul([[1, 2], [1, 3]], "Holberton")
+       Traceback (most recent call last):
+       ....
+       TypeError: m_b must be a list
+
+test string in m_b
+
+       >>> matrix_mul([[1, 2], [1,3]], [[5, "6"], [7, 8]])
+       Traceback (most recent call last):
+       ....
+       TypeError: m_b should contain only integers or floats

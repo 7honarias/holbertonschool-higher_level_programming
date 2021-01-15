@@ -8,6 +8,10 @@
 ========================================================
 EDGE CASES
 ========================================================
+Checking docstring mod:
+    	>>> __import__('100-matrix_mul').__doc__ != None
+   	True
+
 	>>> matrix_mul([[]], [[1, 2], [2,1]])
 	Traceback (most recent call last):
 	....

@@ -1,0 +1,19 @@
+7-base_geometry
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+#create object
+
+>>> bg = BaseGeometry()
+
+#add value
+
+>>> bg.integer_validator("my_int", 12)
+
+
+#add text
+
+>>> bg.integer_validator("name", "john")
+Traceback (most recent call last): 
+....
+TypeError: name must be an integer

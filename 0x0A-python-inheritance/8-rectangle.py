@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ class Rectangle"""
 
+
 class BaseGeometry():
     """ declarations"""
 

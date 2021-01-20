@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-""" class Rectangle"""
+""" lookup method """
 
 
 class BaseGeometry():
-    """ declarations"""
-
+    """class"""
     def area(self):
         """ Raises Exception"""
         raise Exception("area() is not implemented")
@@ -12,9 +11,9 @@ class BaseGeometry():
     def integer_validator(self, name, value):
         """validates value"""
         if type(value) is not int:
-            raise TypeError("{} must be an integer".format(name))
+            raise TypeError(name + " must be an integer")
         if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
+            raise ValueError(name + " must be greater than 0")
 
 
 class Rectangle(BaseGeometry):
@@ -22,6 +21,6 @@ class Rectangle(BaseGeometry):
     def __init__(self, width, height):
         """initialization"""
         self.integer_validator("width", width)
-        self._Rectangle__width = width
+        self.__width = width
         self.integer_validator("height", height)
-        self._Rectangle__height = height
+        self.__height = height

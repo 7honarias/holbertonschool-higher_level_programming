@@ -12,7 +12,7 @@ class Student:
     def to_json(self, attrs=None):
         """function return dict"""
         dir1 = vars(self)
-        if attrs != None:
+        if attrs is not None:
             dir2 = {}
             for i in attrs:
                 if i in self.__dict__:

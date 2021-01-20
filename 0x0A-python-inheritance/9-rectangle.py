@@ -2,21 +2,7 @@
 """ class Rectangle"""
 
 
-class BaseGeometry():
-    """ declarations"""
-
-    def area(self):
-        """calculate area"""
-        return(self._Rectangle__width * self._Rectangle__height)
-
-    def integer_validator(self, name, value):
-        """validate integer"""
-        if type(value) is not int:
-            raise TypeError("{} must be an integer".format(name))
-
-        if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
-
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 class Rectangle(BaseGeometry):
     """class rectangle"""

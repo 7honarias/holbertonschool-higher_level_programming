@@ -6,8 +6,11 @@ import csv
 
 
 class Base:
+    """class base"""
     __nb_objects = 0
+
     def __init__(self, id=None):
+        """init of class base"""
         if id is None:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
@@ -90,7 +93,7 @@ class Base:
         filename = '{}.csv'.format(cls.__name__)
         try:
             with open(filename, mode='r', newline='') as file:
-                dic_list = csv.DictReader(file)#fieldnames=obj_field
+                dic_list = csv.DictReader(file)
                 my_list = []
                 for dicts in dic_list:
                     dictionary = {}

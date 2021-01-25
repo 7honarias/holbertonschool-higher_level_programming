@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import json
+import turtle
 import csv
 """ class base"""
 
@@ -15,12 +16,14 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """to json string"""
         if list_dictionaries is None or len(list_dictionaries) < 1:
             return ([])
         return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """save file json"""
         if len(list_objs) <= 1 or list_objs is None:
             new_list = []
         else:
@@ -69,13 +72,13 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        
+        """save file in csv"""
         filename = cls.__name__ + ".csv"
         list_dictionary = list(map(cls.to_dictionary, list_objs))
         keys = list()
         for key in list_dictionary[0]:
             keys.append(key)
-            
+
         with open(filename, mode="w") as f:
             dict_writer = csv.DictWriter(f, keys)
             dict_writer.writeheader()
@@ -87,10 +90,6 @@ class Base:
         filename = '{}.csv'.format(cls.__name__)
         try:
             with open(filename, mode='r', newline='') as file:
-                if cls.__name__ is 'Square':
-                    obj_field = ["id", "size", "x", "y"]
-                else:
-                    obj_field = ["id", "width", "height", "x", "y"]
                 dic_list = csv.DictReader(file)#fieldnames=obj_field
                 my_list = []
                 for dicts in dic_list:
@@ -102,5 +101,28 @@ class Base:
         except IOError:
             return []
 
-    def draw(list_rectangles, list_squares):
-        
+    @staticmethod
+    def draw(list_rectangle, list_squares):
+        """draw in turtle our squares or rectangle"""
+        turtle.getscreen()
+        for obj in list_rectangle:
+            turtle.pu()
+            turtle.setpos(obj.x, obj.y)
+            for i in range(2):
+                turtle.pd()
+                turtle.fd(obj.width)
+                turtle.right(90)
+                turtle.fd(obj.height)
+                turtle.right(90)
+            turtle.pu()
+
+        for obj in list_squares:
+            turtle.pu()
+            turtle.setpos(obj.x, obj.y)
+            for i in range(2):
+                turtle.pd()
+                turtle.fd(obj.width)
+                turtle.right(90)
+                turtle.fd(obj.height)
+                turtle.right(90)
+            turtle.pu()

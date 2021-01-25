@@ -4,6 +4,10 @@ from models.base import Base
 class TestBase(unittest.TestCase):
 
     def test_values(self):
-        r2 = Base(2,2)
-        self.assertEqual(r2.width, 2)
-        self.assertEqual(r2.height, 2)
+        r2 = Base()
+        self.assertEqual(r2.id, 1)
+        r3 = Base()
+        self.assertEqual(r3.id, 2)
+        r4 = Base(12)
+        self.assertEqual(r4.id, 12)
+

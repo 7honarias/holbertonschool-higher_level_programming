@@ -28,6 +28,13 @@ class TestRectangle(unittest.TestCase):
         """ Test for set id function """
         with self.assertRaises(TypeError):
             b0 = Rectangle(None)
+        with self.assertRaises(TypeError):
+            r2 = Rectangle(1, "2")
+        with self.assertRaises(TypeError):
+            r3 = Rectangle(1, 2, "3")
+        with self.assertRaises(TypeError):
+            r4 = Rectangle(1, 2, 3, "4")
+        r5 = Rectangle(1, 2, 3, 4, 5)
 
     def test_id_error(self):
         """ Test for set id function """
@@ -35,4 +42,5 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.id, 1)
         self.assertEqual(r.width, 1)
         self.assertEqual(r.height, 2)
+        self.assertEqual(r.display(), None)
 

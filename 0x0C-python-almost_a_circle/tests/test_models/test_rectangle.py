@@ -25,6 +25,19 @@ class TestRectangle(unittest.TestCase):
         rect = Rectangle(3, 2)
         area = rect.area()
         self.assertEqual(area, 6)
+
+        output_4 = "  ##\n  ##\n"
+        r4 = Rectangle(2, 2, 2, 0)
+        with patch('sys.stdout', new=StringIO()) as mock_out:
+            r4.display()
+            self.assertEqual(mock_out.getvalue(), output_4)
+
+        output_5 = "\n\n  ##\n  ##\n"
+        r5 = Rectangle(2, 2, 2, 2)
+        with patch('sys.stdout', new=StringIO()) as mock_out:
+            r5.display()
+            self.assertEqual(mock_out.getvalue(), output_5)
+
         output_1 = "#\n"
         r1 = Rectangle(1, 1)
         with patch('sys.stdout', new=StringIO()) as mock_out:
@@ -76,5 +89,10 @@ class TestRectangle(unittest.TestCase):
         rect2_dictionary = rect2.to_dictionary()
         self.assertEqual(rect2_dictionary, {'x': 1, 'y': 9, 'id': 30, 'height': 2,
                                          'width': 10})
+                                        
+        def test_str(self):
+            """test str"""
+            r1 = Rectangle(4, 6, 7, 4, 12)
+            self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
 
 

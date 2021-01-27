@@ -17,7 +17,23 @@ class TestSquare(unittest.TestCase):
 
     def tearDown(self):
         """This method to perform cleanup after each test method completes"""
-        # print("tearDown")
+        Base._Base__nb_objects = 0
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
+        try:
+            os.remove("Rectangle.csv")
+        except Exception:
+            pass
+        try:
+            os.remove("Square.csv")
+        except Exception:
+            pass
 
     def test_id_single(self):
         """ Test for set id function """
@@ -51,3 +67,5 @@ class TestSquare(unittest.TestCase):
         """test str"""
         r1 = Square(4, 6, 7, 4)
         self.assertEqual(str(r1), "[Square] (4) 6/7 - 4")
+
+ 

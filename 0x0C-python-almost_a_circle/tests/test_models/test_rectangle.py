@@ -26,6 +26,11 @@ class TestRectangle(unittest.TestCase):
         area = rect.area()
         self.assertEqual(area, 6)
 
+        r2 = Rectangle(10, 2, 1, 9, 30)
+        r2_dictionary = r2.to_dictionary()
+        self.assertEqual(r2_dictionary, {'x': 1, 'y': 9, 'id': 30, 'height': 2,
+                                         'width': 10})
+
         output_4 = "  ##\n  ##\n"
         r4 = Rectangle(2, 2, 2, 0)
         with patch('sys.stdout', new=StringIO()) as mock_out:
@@ -90,9 +95,19 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rect2_dictionary, {'x': 1, 'y': 9, 'id': 30, 'height': 2,
                                          'width': 10})
                                         
-        def test_str(self):
-            """test str"""
-            r1 = Rectangle(4, 6, 7, 4, 12)
-            self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
+    def test_str(self):
+        """test str"""
+        r1 = Rectangle(4, 6, 7, 4, 12)
+        self.assertEqual(str(r1), "[Rectangle] (12) 7/4 - 4/6")
+
+    def test_update(self):
+        """Checks update method
+        """
+        r1 = Rectangle(10, 10, 10, 10)
+        self.assertEqual(r1.__str__(), "[Rectangle] (1) 10/10 - 10/10")
+        r1.update(height=1)
+        self.assertEqual(r1.__str__(), "[Rectangle] (1) 10/10 - 10/1")
+        r1.update(width=1, x=2)
+        self.assertEqual(r1.__str__(), "[Rectangle] (1) 2/10 - 1/1")
 
 

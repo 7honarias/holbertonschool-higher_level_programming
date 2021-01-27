@@ -23,7 +23,7 @@ class TestRectangle(unittest.TestCase):
     def test_id_single(self):
         """ Test for set id function """
         rect = Rectangle(3, 2)
-        area = r1.area()
+        area = rect.area()
         self.assertEqual(area, 6)
         output_1 = "#\n"
         r1 = Rectangle(1, 1)
@@ -72,4 +72,9 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r5.height, 2)
         self.assertEqual(r5.x, 4)
         self.assertEqual(r5.y, 5)
+        rect2 = Rectangle(10, 2, 1, 9, 30)
+        rect2_dictionary = rect2.to_dictionary()
+        self.assertEqual(rect2_dictionary, {'x': 1, 'y': 9, 'id': 30, 'height': 2,
+                                         'width': 10})
+
 

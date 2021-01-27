@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 """ This is a Unittest module """
 
-
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
+from unittest.mock import patch
+from io import StringIO
 
 
 class TestRectangle(unittest.TestCase):
@@ -21,11 +22,19 @@ class TestRectangle(unittest.TestCase):
 
     def test_id_single(self):
         """ Test for set id function """
-        with self.assertRaises(TypeError):
-            b0 = Rectangle()
+        rect = Rectangle(3, 2)
+        area = r1.area()
+        self.assertEqual(area, 6)
+        output_1 = "#\n"
+        r1 = Rectangle(1, 1)
+        with patch('sys.stdout', new=StringIO()) as mock_out:
+            r1.display()
+            self.assertEqual(mock_out.getvalue(), output_1)
 
     def test_id_none(self):
         """ Test for set id function """
+        with self.assertRaises(TypeError):
+            b0 = Rectangle()
         with self.assertRaises(TypeError):
             b0 = Rectangle(None)
         with self.assertRaises(TypeError):
@@ -46,6 +55,8 @@ class TestRectangle(unittest.TestCase):
             r9 = Rectangle(1, 2, -3)
         with self.assertRaises(ValueError):
             r10 = Rectangle(1, 2, 3, -4)
+        with self.assertRaises(TypeError):
+            r11 = Rectangle(10, 4, 5, 10, 30, 60)
 
     def test_id_error(self):
         """ Test for set id function """
@@ -54,4 +65,11 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.width, 1)
         self.assertEqual(r.height, 2)
         self.assertEqual(r.display(), None)
+
+        r5 = Rectangle(10, 2, 4, 5, 50)
+        self.assertEqual(r5.id, 50)
+        self.assertEqual(r5.width, 10)
+        self.assertEqual(r5.height, 2)
+        self.assertEqual(r5.x, 4)
+        self.assertEqual(r5.y, 5)
 

@@ -29,8 +29,6 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             b0 = Rectangle(None)
 
-
-
     def test_id_error(self):
         """ Test for set id function """
         r = Rectangle(1,2)

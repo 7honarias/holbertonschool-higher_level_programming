@@ -34,7 +34,14 @@ class TestRectangle(unittest.TestCase):
             r3 = Rectangle(1, 2, "3")
         with self.assertRaises(TypeError):
             r4 = Rectangle(1, 2, 3, "4")
-        r5 = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaises(ValueError):
+            r5 = Rectangle(-1, 2)
+        with self.assertRaises(ValueError):
+            r6 = Rectangle(1, -2)
+        with self.assertRaises(ValueError):
+            r7 = Rectangle(0, 1)
+        with self.assertRaises(ValueError):
+            r8 = Rectangle(1, 0)
 
     def test_id_error(self):
         """ Test for set id function """

@@ -26,7 +26,20 @@ class TestSquare(unittest.TestCase):
 
     def test_id_none(self):
         """ Test for set id function """
-        pass
+        with self.assertRaises(TypeError):
+            b0 = Square(None)
+        with self.assertRaises(TypeError):
+            r2 = Square(1, "2")
+        with self.assertRaises(TypeError):
+            r3 = Square(1, 2, "3")
+        with self.assertRaises(ValueError):
+            r5 = Square(-1, 2)
+        with self.assertRaises(ValueError):
+            r6 = Square(1, -2)
+        with self.assertRaises(ValueError):
+            r7 = Square(0, 1)
+        with self.assertRaises(ValueError):
+            r9 = Square(1, 2, -3)
 
     def test_id_multiple(self):
         """ Test for set id function """

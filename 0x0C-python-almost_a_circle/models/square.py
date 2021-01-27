@@ -26,6 +26,7 @@ class Square(Rectangle):
                .format(self.id, self.x, self.y, self.size))
 
     def update(self, *args, **kwargs):
+        """update value"""
         if args:
             my_list = ["self.id", "self.size", "self.x", "self.y"]
             for i in range(len(args)):

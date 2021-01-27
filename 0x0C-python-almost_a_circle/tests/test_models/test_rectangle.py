@@ -3,6 +3,7 @@
 
 
 import unittest
+from models.rectangle import Rectangle
 from models.base import Base
 
 
@@ -20,25 +21,20 @@ class TestRectangle(unittest.TestCase):
 
     def test_id_single(self):
         """ Test for set id function """
-        b0 = Base(1)
-        self.assertEqual(b0.id, 1)
+        with self.assertRaises(TypeError):
+            b0 = Rectangle()
 
     def test_id_none(self):
         """ Test for set id function """
-        b0 = Base(None)
-        self.assertEqual(b0.id, 1)
+        with self.assertRaises(TypeError):
+            b0 = Rectangle(None)
 
-    def test_id_multiple(self):
-        """ Test for set id function """
-        b0 = Base()
-        b1 = Base()
-        self.assertEqual(b0.id, 1)
-        self.assertEqual(b1.id, 2)
+
 
     def test_id_error(self):
         """ Test for set id function """
-        self.assertEqual("Juan", Base("Juan").id)
-        self.assertEqual(2.5, Base(2.5).id)
-        self.assertEqual([1, 2], Base([1, 2]).id)
-        self.assertEqual({'1': 2}, Base({'1': 2}).id)
-        self.assertEqual(True, Base(True).id)
+        r = Rectangle(1,2)
+        self.assertEqual(r.id, 1)
+        self.assertEqual(r.width, 1)
+        self.assertEqual(r.height, 2)
+

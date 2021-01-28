@@ -58,6 +58,8 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             r2 = Rectangle(1, "2")
         with self.assertRaises(TypeError):
+            b1 = Rectangle("1", 2)
+        with self.assertRaises(TypeError):
             r3 = Rectangle(1, 2, "3")
         with self.assertRaises(TypeError):
             r4 = Rectangle(1, 2, 3, "4")
@@ -75,6 +77,11 @@ class TestRectangle(unittest.TestCase):
             r10 = Rectangle(1, 2, 3, -4)
         with self.assertRaises(TypeError):
             r11 = Rectangle(10, 4, 5, 10, 30, 60)
+        
+        with self.assertRaises(AttributeError):
+            r2 = None
+            r2.to_dictionary
+            
 
     def test_id_error(self):
         """ Test for set id function """
@@ -109,5 +116,13 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.__str__(), "[Rectangle] (1) 10/10 - 10/1")
         r1.update(width=1, x=2)
         self.assertEqual(r1.__str__(), "[Rectangle] (1) 2/10 - 1/1")
+        r1.update(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4 })
+        self.assertEqual(r1.__str__(), "[Rectangle] (89) 3/4 - 1/2")
 
-
+        r2 = Rectangle.create(**{ 'id': 89, 'width': 4, 'height': 2 })
+        self.assertEqual(r2.width, 4)
+        r3 = Rectangle.create(**{ 'id': 8, 'width': 1, 'height': 2, 'x': 3 })
+        self.assertEqual(r3.id, 8)
+        r4 = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4 })
+        self.assertEqual(r4.x, 3)
+        Rectangle.save_to_file(None)

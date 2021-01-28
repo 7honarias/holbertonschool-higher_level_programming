@@ -81,7 +81,9 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(AttributeError):
             r2 = None
             r2.to_dictionary
-            
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file([])
+
 
     def test_id_error(self):
         """ Test for set id function """
@@ -101,6 +103,9 @@ class TestRectangle(unittest.TestCase):
         rect2_dictionary = rect2.to_dictionary()
         self.assertEqual(rect2_dictionary, {'x': 1, 'y': 9, 'id': 30, 'height': 2,
                                          'width': 10})
+        Rectangle.save_to_file(None)
+        Rectangle.save_to_file([Rectangle(1, 2)])
+        Rectangle.load_from_file()
                                         
     def test_str(self):
         """test str"""

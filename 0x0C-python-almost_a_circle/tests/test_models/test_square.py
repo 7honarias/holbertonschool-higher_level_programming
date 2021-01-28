@@ -43,6 +43,8 @@ class TestSquare(unittest.TestCase):
     def test_id_none(self):
         """ Test for set id function """
         with self.assertRaises(TypeError):
+            c1 = Square("1")
+        with self.assertRaises(TypeError):
             b0 = Square(None)
         with self.assertRaises(TypeError):
             r2 = Square(1, "2")
@@ -62,6 +64,12 @@ class TestSquare(unittest.TestCase):
         s1 = Square(3)
         self.assertEqual(s1.id, 1)
         self.assertEqual(s1.size, 3)
+        s2 = Square(1, 2)
+        self.assertEqual(s2.size, 1)
+        s3 = Square(1, 2, 3)
+        self.assertEqual(s3.x, 2)
+        s4 = Square(1, 2, 3, 4)
+        self.assertEqual(s4.y, 3)
 
     def test_str(self):
         """test str"""

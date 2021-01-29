@@ -41,6 +41,83 @@ class TestBase(unittest.TestCase):
         self.assertEqual([1, 2], Base([1, 2]).id)
         self.assertEqual({'1': 2}, Base({'1': 2}).id)
         self.assertEqual(True, Base(True).id)
+    
+    def test_from_json_string(self):
+        """Checks from_json_string method
+        """
+        list_input = [
+                    {'id': 89, 'width': 10, 'height': 4},
+                    {'id': 7, 'width': 1, 'height': 7}
+        ]
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
+        self.assertEqual(list_output, [{'height': 4, 'width': 10, 'id': 89},
+                                       {'height': 7, 'width': 1, 'id': 7}])
+        self.assertTrue(type(list_output) == list)
+
+        list_input = [
+                    {'id': 89, 'width': 10, 'height': 4, 'x': 3, 'y': 2},
+                    {'id': 7, 'width': 1, 'height': 7, 'x': 3}
+        ]
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
+        self.assertEqual(list_output, [{'height': 4, 'width': 10, 'id': 89,
+                                        'x': 3, 'y': 2},
+                                       {'height': 7, 'width': 1, 'id': 7,
+                                        'x': 3}])
+        self.assertTrue(type(list_output) == list)
+
+        list_input = [
+                    {'id': 89, 'width': 10, 'height': 4, 'x': 3, 'y': 2},
+                    {'id': 7, 'width': 1, 'height': 7, 'x': 3}
+        ]
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
+        self.assertEqual(list_output, [{'height': 4, 'width': 10, 'id': 89,
+                                        'x': 3, 'y': 2},
+                                       {'height': 7, 'width': 1,
+                                        'id': 7, 'x': 3}])
+        self.assertTrue(type(list_output) == list)
+
+        list_input = []
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
+        self.assertEqual(list_output, [])
+        self.assertTrue(type(list_output) == list)
+
+        json_list_input = Rectangle.to_json_string(None)
+        list_output = Rectangle.from_json_string(json_list_input)
+        self.assertEqual(list_output, [])
+        self.assertTrue(type(list_output) == list)
+
+    def test_save_to_file(self):
+        """Checks save_to_file
+        """
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
+        with open("Rectangle.json", "r") as file:
+            sum_read = sum(list(map(lambda x: ord(x), file.read())))
+            sum_expected = sum(list(map(lambda x: ord(x), '[{"y": 8, "x": 2, '
+                                        '"id": 1, "width": 10, "height": 7}, '
+                                        '{"y": 0, "x": 0, "id": 2, '
+                                        '"width": 2, "height": 4}]')))
+            self.assertEqual(sum_read, sum_expected)
+
+        r1 = Rectangle(10, 7)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
+        with open("Rectangle.json", "r") as file:
+            sum_read = sum(list(map(lambda x: ord(x), file.read())))
+            sum_expected = sum(list(map(lambda x: ord(x), '[{"y": 0, "x": 0, '
+                                        '"id": 3, "width": 10, "height": 7}, '
+                                        '{"y": 0, "x": 0, "id": 4, '
+                                        '"width": 2, "height": 4}]')))
+            self.assertEqual(sum_read, sum_expected)
+
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), '[]')
 
     def test_rectangle_save_to_file(self):
         Rectangle.save_to_file([])
@@ -74,6 +151,24 @@ class TestBase(unittest.TestCase):
         list_rectangles_output = Rectangle.load_from_file()
         self.assertEqual(str(r1), str(list_rectangles_output[0]))
         self.assertEqual(str(r2), str(list_rectangles_output[1]))
+        list_square_output = Square.load_from_file()
+        self.assertEqual(str(list_square_output), "[]")
+
+        s1 = Square(10, 7, 2, 8)
+        s2 = Square(2, 4)
+        list_square_input = [s1, s2]
+        Square.save_to_file(list_square_input)
+        list_square_output = Square.load_from_file()
+        self.assertEqual(str(s1), str(list_square_output[0]))
+        self.assertEqual(str(s2), str(list_square_output[1]))
+
+        s1 = Square(10, 50)
+        s2 = Square(2, 0, 0, 89)
+        list_square_input = [s1, s2]
+        Square.save_to_file(list_square_input)
+        list_square_output = Square.load_from_file()
+        self.assertEqual(str(s1), str(list_square_output[0]))
+        self.assertEqual(str(s2), str(list_square_output[1]))
 
     def tearDown(self):
         """Tear down test method to reset class attribute

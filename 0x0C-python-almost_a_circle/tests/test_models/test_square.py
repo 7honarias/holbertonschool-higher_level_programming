@@ -77,5 +77,3 @@ class TestSquare(unittest.TestCase):
         """test str"""
         r1 = Square(4, 6, 7, 4)
         self.assertEqual(str(r1), "[Square] (4) 6/7 - 4")
-
- 

@@ -77,7 +77,8 @@ class TestRectangle(unittest.TestCase):
             r10 = Rectangle(1, 2, 3, -4)
         with self.assertRaises(TypeError):
             r11 = Rectangle(10, 4, 5, 10, 30, 60)
-        
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file([])
         with self.assertRaises(AttributeError):
             r2 = None
             r2.to_dictionary
@@ -101,8 +102,10 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rect2_dictionary, {'x': 1, 'y': 9, 'id': 30, 'height': 2,
                                          'width': 10})
         Rectangle.save_to_file(None)
+        
         Rectangle.save_to_file([Rectangle(1, 2)])
-        Rectangle.load_from_file()
+        rect4 = Rectangle(1, 1)
+        my_list = rect4.load_from_file()
                                         
     def test_str(self):
         """test str"""

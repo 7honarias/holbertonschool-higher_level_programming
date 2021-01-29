@@ -65,7 +65,7 @@ class TestSquare(unittest.TestCase):
         r2.update(**{ 'id': 3, 'size': 1, 'x': 2, 'y': 3 })
         self.assertEqual(r2.id, 3)
 
-def tearDown(self):
+    def tearDown(self):
         """This method to perform cleanup after each test method completes"""
         Base._Base__nb_objects = 0
         try:

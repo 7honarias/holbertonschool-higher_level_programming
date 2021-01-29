@@ -77,8 +77,6 @@ class TestRectangle(unittest.TestCase):
             r10 = Rectangle(1, 2, 3, -4)
         with self.assertRaises(TypeError):
             r11 = Rectangle(10, 4, 5, 10, 30, 60)
-        with self.assertRaises(TypeError):
-            Rectangle.save_to_file([])
         with self.assertRaises(AttributeError):
             r2 = None
             r2.to_dictionary

@@ -60,7 +60,7 @@ class TestBase(unittest.TestCase):
                                         '"size": 2}]')))
             self.assertEqual(sum_read, sum_expected)
 
-    ef test_load_from_file(self):
+    def test_load_from_file(self):
         """Checks for load_from_file
         """
         # Check for rectangle load from file

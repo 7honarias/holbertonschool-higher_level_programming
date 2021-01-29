@@ -15,26 +15,6 @@ class TestSquare(unittest.TestCase):
         Base._Base__nb_objects = 0
         # print("setUp")
 
-    def tearDown(self):
-        """This method to perform cleanup after each test method completes"""
-        Base._Base__nb_objects = 0
-        try:
-            os.remove("Rectangle.json")
-        except Exception:
-            pass
-        try:
-            os.remove("Square.json")
-        except Exception:
-            pass
-        try:
-            os.remove("Rectangle.csv")
-        except Exception:
-            pass
-        try:
-            os.remove("Square.csv")
-        except Exception:
-            pass
-
     def test_id_single(self):
         """ Test for set id function """
         with self.assertRaises(TypeError):
@@ -58,6 +38,8 @@ class TestSquare(unittest.TestCase):
             r7 = Square(0, 1)
         with self.assertRaises(ValueError):
             r9 = Square(1, 2, -3)
+        with self.assertRaises(TypeError):
+            Square.save_to_file([])
 
     def test_id_multiple(self):
         """ Test for set id function """
@@ -70,10 +52,35 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s3.x, 2)
         s4 = Square(1, 2, 3, 4)
         self.assertEqual(s4.y, 3)
-        Square.load_from_file()
+        my_list = Square.load_from_file()
+        Square.save_to_file(None)
         Square.save_to_file([Square(1)])
 
     def test_str(self):
         """test str"""
         r1 = Square(4, 6, 7, 4)
         self.assertEqual(str(r1), "[Square] (4) 6/7 - 4")
+        r2 = Square.create(**{ 'id': 25, 'size': 1, 'x': 2, 'y': 3 })
+        self.assertEqual(r2.id, 25)
+        r2.update(**{ 'id': 3, 'size': 1, 'x': 2, 'y': 3 })
+        self.assertEqual(r2.id, 3)
+
+def tearDown(self):
+        """This method to perform cleanup after each test method completes"""
+        Base._Base__nb_objects = 0
+        try:
+            os.remove("Rectangle.json")
+        except Exception:
+            pass
+        try:
+            os.remove("Square.json")
+        except Exception:
+            pass
+        try:
+            os.remove("Rectangle.csv")
+        except Exception:
+            pass
+        try:
+            os.remove("Square.csv")
+        except Exception:
+            pass

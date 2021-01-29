@@ -41,8 +41,6 @@ class TestSquare(unittest.TestCase):
             r7 = Square(0, 1)
         with self.assertRaises(ValueError):
             r9 = Square(1, 2, -3)
-        with self.assertRaises(TypeError):
-            Square.save_to_file([])
 
     def test_id_multiple(self):
         """ Test for set id function """

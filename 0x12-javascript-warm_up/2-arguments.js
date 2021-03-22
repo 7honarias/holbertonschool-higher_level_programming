@@ -1,10 +1,5 @@
 #!/usr/bin/node
-
-process.argv.forEach((val, index) => {
-  if (index > 1) {
-    console.log(val);
-  }
-});
+/* Script argv lengt */
 if (process.argv.length > 2) {
   console.log('Argument found');
 } else {

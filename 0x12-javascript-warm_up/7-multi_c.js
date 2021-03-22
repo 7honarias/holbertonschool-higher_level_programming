@@ -1,5 +1,7 @@
 #!/usr/bin/node
 
-let str = "C is fun";
-let num = process.argv[2];
-console.log(num);
+const str = 'C is fun';
+const num = process.argv[2];
+for (let i = 0; i < num; i++) {
+  console.log(str);
+}

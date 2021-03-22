@@ -5,5 +5,8 @@ if (myArr.length <= 1) {
   console.log(0);
 } else {
   myArr = myArr.map(x => parseInt(x));
-  console.log(myArr.sort()[myArr.length - 2]);
+  myArr.sort(function (a, b) {
+    return a - b;
+  });
+  console.log(myArr[myArr.length - 2]);
 }

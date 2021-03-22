@@ -1,8 +1,9 @@
 #!/usr/bin/node
 
 const myArr = process.argv;
-const myRex = /[0-9]/;
-if (myRex.test(myArr[2])) {
+const myRex = parseInt(myArr[2]);
+
+if (Number.isInteger(myRex)) {
   console.log(parseInt(myArr[2]));
 } else {
   console.log('Not a number');

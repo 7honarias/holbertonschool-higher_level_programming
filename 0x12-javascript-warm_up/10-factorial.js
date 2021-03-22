@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
-function Factorial(n) {
-  if (n === 1 || n === NaN) {
+function Factorial (n) {
+  if (n === 1 || isNaN(n)) {
     return 1;
   }
   return n * Factorial(n - 1);

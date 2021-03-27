@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-# module print all table
-
+""" module print all table
+"""
 import MySQLdb
 
 from sys import argv

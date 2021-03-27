@@ -17,7 +17,8 @@ if __name__ == '__main__':
                            passwd=password, db=database, charset='utf8')
 
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE name = {}".format(argv[4]))
+    cur.execute("SELECT * FROM states WHERE name='{}' ORDER BY id"
+                .format(match))
 
     query_rows = cur.fetchall();
 

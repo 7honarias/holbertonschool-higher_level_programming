@@ -1,7 +1,11 @@
 #!/usr/bin/python3
-
+""" script that takes in the name of a state as an argument
+and lists all cities
+"""
 import MySQLdb
+
 from sys import argv
+
 
 if __name__ == '__main__':
     args = {
@@ -17,7 +21,9 @@ if __name__ == '__main__':
     conn = MySQLdb.connect(**args)
     cur = conn.cursor()
 
-    cur.execute("SELECT cities.name FROM cities INNER JOIN states ON cities.state_id = states.id WHERE states.name = %s ORDER BY cities.id ASC", (match,))
+    cur.execute("SELECT cities.name FROM cities INNER JOIN states ON \
+    cities.state_id = states.id WHERE states.name = %s \
+    ORDER BY cities.id ASC", (match,))
 
     query_rows = cur.fetchall()
     isfirst = 0

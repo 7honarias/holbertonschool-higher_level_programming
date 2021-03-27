@@ -16,9 +16,9 @@ if __name__ == '__main__':
                            passwd=password, db=database, charset='utf8')
 
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE name = %s",(match,))
+    cur.execute("SELECT * FROM states WHERE name = %s", (match,))
 
-    query_rows = cur.fetchall();
+    query_rows = cur.fetchall()
 
     for row in query_rows:
         print(row)

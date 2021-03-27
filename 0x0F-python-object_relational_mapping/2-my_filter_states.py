@@ -1,22 +1,28 @@
 #!/usr/bin/python3
+""" Filter by argument 4
+"""
+
 from sys import argv
+
 import MySQLdb
 
-username = argv[1]
-password = argv[2]
-database = argv[3]
-match = argv[4]
 
-conn = MySQLdb.connect(host='localhost', port=3306, user=username,
-                       passwd=password, db=database, charset='utf8')
+if __name__ == '__main__':
+    username = argv[1]
+    password = argv[2]
+    database = argv[3]
+    match = argv[4]
 
-cur = conn.cursor()
-cur.execute("SELECT * FROM states WHERE name = {}".format(argv[4]))
+    conn = MySQLdb.connect(host='localhost', port=3306, user=username,
+                           passwd=password, db=database, charset='utf8')
 
-query_rows = cur.fetchall();
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM states WHERE name = {}".format(argv[4]))
 
-for row in query_rows:
-    print(row)
+    query_rows = cur.fetchall();
 
-cur.close()
-conn.close()
+    for row in query_rows:
+        print(row)
+
+    cur.close()
+    conn.close()

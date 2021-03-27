@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-# List that start in N
-
+""" List that start in N
+"""
 import MySQLdb
 
 from sys import argv

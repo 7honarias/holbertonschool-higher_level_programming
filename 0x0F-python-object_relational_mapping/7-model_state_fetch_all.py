@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+"""script that lists all State objects from the database"""
 from sys import argv
 from model_state import Base, State
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
+
 
 if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
@@ -16,3 +18,4 @@ if __name__ == "__main__":
 
     for state in states:
         print("{}: {}".format(state.id, state.name))
+    session.close()

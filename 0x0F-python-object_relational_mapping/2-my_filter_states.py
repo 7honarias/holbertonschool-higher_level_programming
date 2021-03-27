@@ -23,7 +23,8 @@ if __name__ == '__main__':
     query_rows = cur.fetchall();
 
     for row in query_rows:
-        print(row)
+        if row[1] == match:
+            print(row)
 
     cur.close()
     conn.close()

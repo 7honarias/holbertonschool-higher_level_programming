@@ -20,7 +20,7 @@ if __name__ == '__main__':
     cur.execute("SELECT * FROM states WHERE name='{}' ORDER BY id"
                 .format(match))
 
-    query_rows = cur.fetchall();
+    query_rows = cur.fetchall()
 
     for row in query_rows:
         if row[1] == match:

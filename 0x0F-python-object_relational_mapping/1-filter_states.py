@@ -5,6 +5,7 @@ import MySQLdb
 
 from sys import argv
 
+
 if __name__ == "__main__":
     username = argv[1]
     password = argv[2]
@@ -20,7 +21,8 @@ if __name__ == "__main__":
     query_row = cur.fetchall()
 
     for row in query_row:
-        print(row)
+        if row[1][0] == 'N':
+            print(row)
 
     cur.close()
     conn.close()

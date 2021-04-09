@@ -1,3 +1,3 @@
 #!/bin/bash
 # script that takes in a URL
-curl -sI "$1" | awk '/Content-Length/{print $2}'
+curl -sI "$1" | awk '/Content-length/{print $2}'

@@ -10,6 +10,6 @@ if __name__ == "__main__":
     import sys
     url = sys.argv[1]
     email = sys.argv[2]
-    values = {'email' : email}
+    values = {'email': email}
     req = requests.post(url, values)
     print(req.text)

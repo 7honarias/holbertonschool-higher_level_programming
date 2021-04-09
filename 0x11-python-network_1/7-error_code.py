@@ -6,7 +6,8 @@ if __name__ == "__main__":
     import sys
     import requests
     url = sys.argv[1]
-    try:
-        req = requests.get(url)
-    except 
-        print(req.status)
+    req = requests.get(url)
+    if req.status_code == requests.codes.ok:
+        print(req.text)
+    else:
+        print("Error code: {}".format(req.status_code))

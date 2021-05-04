@@ -11,15 +11,14 @@ request.get(mUrl, function (err, response, body) {
   const todos = JSON.parse(body);
   for (const task in todos) {
     userId = todos[task].userId;
-    if (dictUserTaskComplete.hasOwnProperty(userId)) {
-      if (todos[task].completed === true) {
+    if (todos[task].completed === true) {
+      if (dictUserTaskComplete[userId] !== undefined) {
         let count = dictUserTaskComplete[userId];
         count += 1;
-        console.log(count);
         dictUserTaskComplete[userId] = count;
+      } else {
+        dictUserTaskComplete[userId] = 1;
       }
-    } else {
-      dictUserTaskComplete[userId] = 1;
     }
   }
   console.log(dictUserTaskComplete);

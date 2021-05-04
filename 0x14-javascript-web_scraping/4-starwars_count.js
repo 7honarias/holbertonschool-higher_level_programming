@@ -2,15 +2,16 @@
 const request = require('request');
 
 const url = process.argv[2];
-const characterId = 'https://swapi-api.hbtn.io/api/people/18/';
 let numMoviesByCharter = 0;
 request.get(url, function (err, response, body) {
   if (err) { console.log('Error: ' + err.message); }
-  const films = JSON.parse(body);
-  for (const film in films.results) {
-    const listCharters = films.results[film].characters;
-    if (listCharters.indexOf(characterId) !== -1) {
-      numMoviesByCharter += 1;
+  const films = JSON.parse(body).results;
+  for (const film in films) {
+    const listCharters = films[film].characters;
+    for (const charters in listCharters) {
+      if (listCharters[charters].includes('18')) {
+        numMoviesByCharter++;
+      }
     }
   }
   console.log(numMoviesByCharter);

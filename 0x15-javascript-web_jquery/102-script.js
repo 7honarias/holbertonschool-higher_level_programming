@@ -1,4 +1,4 @@
-url = 'https://fourtonfish.com/hellosalut/?lang=';
+const url = 'https://fourtonfish.com/hellosalut/?lang=';
 $(document).ready(function () {
   $('INPUT#btn_translate').on('click', function () {
     const lan = $('INPUT#language_code').val();
